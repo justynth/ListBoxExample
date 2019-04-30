@@ -8,7 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label x:Name="Client_Label" Content="Clients" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="100">
+            <ListBoxItem>Bank 1</ListBoxItem>
+            <ListBoxItem>Bank 2</ListBoxItem>
+            <ListBoxItem>Bank 3</ListBoxItem>
+            <ListBoxItem>Bank 4</ListBoxItem>
+        </ListBox>
         <Label x:Name="Reports_Label" Content="Reports" HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" HorizontalContentAlignment="Center"/>
         <ListBox x:Name="Reports_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,230,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>

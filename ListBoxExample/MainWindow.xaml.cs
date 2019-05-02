@@ -28,6 +28,33 @@ namespace ListBoxExample
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             string inputString = Search_TextBox.Text;
+            Search_TextBox.Text = String.Empty;
+        }
+
+        private void Client_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string currentClient = Client_ListBox.SelectedItem.ToString();
+            currentClient = currentClient.Substring(37);
+
+            foreach (ListBoxItem listBoxItem in Reports_ListBox.Items)
+            {
+                listBoxItem.Visibility = Visibility.Hidden;
+            }
+
+            switch (currentClient)
+            {
+                case "Bank 1":
+                    BankOneReportOne.Visibility = Visibility.Visible;
+                    BankOneReportTwo.Visibility = Visibility.Visible;
+                    break;
+                /*case "Bank 2":
+                    BankTwoReportOne.Visibility = Visibility.Visible;
+                    break;
+                */
+                default:
+                    break;
+            }
+            
         }
     }
 }

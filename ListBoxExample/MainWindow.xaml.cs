@@ -24,5 +24,10 @@ namespace ListBoxExample
         {
             InitializeComponent();
         }
+
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string inputString = Search_TextBox.Text;
+        }
     }
 }

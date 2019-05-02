@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListBoxExample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Background="AliceBlue"
+        Title="MainWindow" Height="540" Width="800">
     <Grid>
-        <Label x:Name="Client_Label" Content="Clients" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="100">
-            <ListBoxItem>Bank 1</ListBoxItem>
-            <ListBoxItem>Bank 2</ListBoxItem>
-            <ListBoxItem>Bank 3</ListBoxItem>
-            <ListBoxItem>Bank 4</ListBoxItem>
+        <Label x:Name="Client_Label" Content="Clients" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="200">
+            <ListBoxItem Content="Bank 1"></ListBoxItem>
+            <ListBoxItem Content="Bank 2"></ListBoxItem>
+            <ListBoxItem Content="Bank 3"></ListBoxItem>
+            <ListBoxItem Content="Bank 4"></ListBoxItem>
+            <ListBoxItem Content="Bank 5"></ListBoxItem>
         </ListBox>
-        <Label x:Name="Reports_Label" Content="Reports" HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <ListBox x:Name="Reports_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,230,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="Reports_Label" Content="Reports" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <ListBox x:Name="Reports_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,220,0,0" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="Search_TextBox" HorizontalAlignment="Left" Height="40" Margin="20,370,0,30" VerticalAlignment="Bottom" Width="125" FontFamily="Cambria" FontSize="15" VerticalContentAlignment="Center"></TextBox>
+        <Button x:Name="Search_Button" HorizontalAlignment="Left" Height="40" Margin="155,370,0,30" VerticalAlignment="Bottom" Width="65" Content="Search" FontFamily="Cambria" Click="Search_Button_Click"/>
     </Grid>
 </Window>

@@ -20,6 +20,7 @@ namespace ListBoxExample
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<string, List<ListBoxItem>> reportsDictionary = RetrieveReportsDictionary();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,32 +30,91 @@ namespace ListBoxExample
         {
             string inputString = Search_TextBox.Text;
             Search_TextBox.Text = String.Empty;
+            MessageBox.Show(inputString);
         }
 
         private void Client_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string currentClient = Client_ListBox.SelectedItem.ToString();
-            currentClient = currentClient.Substring(37);
+            ListBoxItem clientSelection = ((sender as ListBox).SelectedItem as ListBoxItem);
+            string currentClient = clientSelection.Content.ToString();
+            Reports_ListBox.Items.Clear();
 
-            foreach (ListBoxItem listBoxItem in Reports_ListBox.Items)
+            if (reportsDictionary.ContainsKey(currentClient))
             {
-                listBoxItem.Visibility = Visibility.Hidden;
+                List<ListBoxItem> reportsList = reportsDictionary[currentClient];
+
+                foreach (ListBoxItem listBoxItem in reportsList)
+                {
+                    Reports_ListBox.Items.Add(listBoxItem);
+                }
             }
 
-            switch (currentClient)
-            {
-                case "Bank 1":
-                    BankOneReportOne.Visibility = Visibility.Visible;
-                    BankOneReportTwo.Visibility = Visibility.Visible;
-                    break;
-                /*case "Bank 2":
-                    BankTwoReportOne.Visibility = Visibility.Visible;
-                    break;
-                */
-                default:
-                    break;
-            }
-            
+        }
+
+        private static Dictionary<string, List<ListBoxItem>> RetrieveReportsDictionary()
+        {
+            Dictionary<string, List<ListBoxItem>> reportsDictionary = new Dictionary<string, List<ListBoxItem>>();
+
+            List<ListBoxItem> bankOneReports = getBankOneReports();
+            List<ListBoxItem> bankTwoReports = getBankTwoReports();
+
+            reportsDictionary.Add("Bank 1", bankOneReports);
+            reportsDictionary.Add("Bank 2", bankTwoReports);
+
+            return reportsDictionary;
+        }
+
+        private static List<ListBoxItem> getBankOneReports()
+        {
+            List<ListBoxItem> bankOneReports = new List<ListBoxItem>();
+
+            ListBoxItem bankOneReportOne = new ListBoxItem();
+            ListBoxItem bankOneReportTwo = new ListBoxItem();
+            ListBoxItem bankOneReportThree = new ListBoxItem();
+
+            bankOneReportOne.Content = "Bank 1 Report 1";
+            bankOneReportTwo.Content = "Bank 1 Report 2";
+            bankOneReportThree.Content = "Bank 1 Report 3";
+
+            bankOneReports.Add(bankOneReportOne);
+            bankOneReports.Add(bankOneReportTwo);
+            bankOneReports.Add(bankOneReportThree);
+
+            return bankOneReports;
+        }
+
+        private static List<ListBoxItem> getBankTwoReports()
+        {
+            List<ListBoxItem> bankTwoReports = new List<ListBoxItem>();
+
+            ListBoxItem bankTwoReportOne = new ListBoxItem();
+            ListBoxItem bankTwoReportTwo = new ListBoxItem();
+            ListBoxItem bankTwoReportThree = new ListBoxItem();
+            ListBoxItem bankTwoReportFour = new ListBoxItem();
+            ListBoxItem bankTwoReportFive = new ListBoxItem();
+            ListBoxItem bankTwoReportSix = new ListBoxItem();
+            ListBoxItem bankTwoReportSeven = new ListBoxItem();
+            ListBoxItem bankTwoReportEight = new ListBoxItem();
+
+            bankTwoReportOne.Content = "Bank 2 Report 1";
+            bankTwoReportTwo.Content = "Bank 2 Report 2";
+            bankTwoReportThree.Content = "Bank 2 Report 3";
+            bankTwoReportFour.Content = "Bank 2 Report 4";
+            bankTwoReportFive.Content = "Bank 2 Report 5";
+            bankTwoReportSix.Content = "Bank 2 Report 6";
+            bankTwoReportSeven.Content = "Bank 2 Report 7";
+            bankTwoReportEight.Content = "Bank 2 Report 8";
+
+            bankTwoReports.Add(bankTwoReportOne);
+            bankTwoReports.Add(bankTwoReportTwo);
+            bankTwoReports.Add(bankTwoReportThree);
+            bankTwoReports.Add(bankTwoReportFour);
+            bankTwoReports.Add(bankTwoReportFive);
+            bankTwoReports.Add(bankTwoReportSix);
+            bankTwoReports.Add(bankTwoReportSeven);
+            bankTwoReports.Add(bankTwoReportEight);
+
+            return bankTwoReports;
         }
     }
 }

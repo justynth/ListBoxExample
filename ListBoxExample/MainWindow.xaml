@@ -9,7 +9,7 @@
         Title="MainWindow" Height="540" Width="800">
     <Grid>
         <Label x:Name="Client_Label" Content="Clients" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="Client_ListBox_SelectionChanged">
+        <ListBox x:Name ="Client_ListBox" HorizontalAlignment="Left" Height="140" Margin="20,40,0,0" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="Client_ListBox_SelectionChanged" SelectionMode="Single">
             <ListBoxItem Content="Bank 1"></ListBoxItem>
             <ListBoxItem Content="Bank 2"></ListBoxItem>
             <ListBoxItem Content="Bank 3"></ListBoxItem>
@@ -20,11 +20,7 @@
             <ListBoxItem Content="Bank 8"></ListBoxItem>
         </ListBox>
         <Label x:Name="Reports_Label" Content="Reports" HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <ListBox x:Name="Reports_ListBox" HorizontalAlignment="Left" Height="180" Margin="20,230,0,0" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible">
-            <ListBoxItem Name="BankOneReportOne" Content="Bank 1 Report 1" Visibility="Hidden"></ListBoxItem>
-            <ListBoxItem Name="BankOneReportTwo" Content="Bank 1 Report 1" Visibility="Hidden"></ListBoxItem>
-            <ListBoxItem Name="BankTwoReportOne" Content="Bank 2 Report 1" Visibility="Hidden"></ListBoxItem>
-        </ListBox>
+        <ListBox x:Name="Reports_ListBox" HorizontalAlignment="Left" Height="180" Margin="20,230,0,0" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Single"/>
         <TextBox x:Name="Search_TextBox" HorizontalAlignment="Left" Height="40" Margin="20,370,0,30" VerticalAlignment="Bottom" Width="125" FontFamily="Cambria" FontSize="15" VerticalContentAlignment="Center"></TextBox>
         <Button x:Name="Search_Button" HorizontalAlignment="Left" Height="40" Margin="155,370,0,30" VerticalAlignment="Bottom" Width="65" Content="Search" FontFamily="Cambria" Click="Search_Button_Click"/>
     </Grid>

@@ -30,7 +30,27 @@ namespace ListBoxExample
         {
             string inputString = Search_TextBox.Text;
             Search_TextBox.Text = String.Empty;
-            MessageBox.Show(inputString);
+            Reports_ListBox.Items.Clear();
+
+            foreach(KeyValuePair<string, List<ListBoxItem>> entry in reportsDictionary)
+            {
+                string reportKey = entry.Key;
+                List<ListBoxItem> reportList = entry.Value;
+                
+                foreach  (ListBoxItem report in reportList)
+                {
+                    string reportName = report.Content.ToString();
+                    if (inputString.Contains(reportName))
+                    {
+                        Client_ListBox.SelectedValue = reportKey;
+                        Reports_ListBox.SelectedItem = report;
+                    }
+                    else if (inputString.Contains(reportKey))
+                    {
+                        Client_ListBox.SelectedItem = Client_ListBox.Items.IndexOf(reportKey);
+                    }
+                }
+            }
         }
 
         private void Client_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,6 +68,12 @@ namespace ListBoxExample
                     Reports_ListBox.Items.Add(listBoxItem);
                 }
             }
+            else
+            {
+                ListBoxItem emptyListBoxItem = new ListBoxItem();
+                emptyListBoxItem.Content = @"(empty)";
+                Reports_ListBox.Items.Add(emptyListBoxItem);
+            }
 
         }
 
@@ -57,9 +83,19 @@ namespace ListBoxExample
 
             List<ListBoxItem> bankOneReports = getBankOneReports();
             List<ListBoxItem> bankTwoReports = getBankTwoReports();
+            List<ListBoxItem> bankThreeReports = getBankThreeReports();
+            List<ListBoxItem> bankFourReports = getBankFourReports();
+            List<ListBoxItem> bankFiveReports = getBankFiveReports();
+            List<ListBoxItem> bankSixReports = getBankSixReports();
+            List<ListBoxItem> bankSevenReports = getBankSevenReports();
 
             reportsDictionary.Add("Bank 1", bankOneReports);
             reportsDictionary.Add("Bank 2", bankTwoReports);
+            reportsDictionary.Add("Bank 3", bankThreeReports);
+            reportsDictionary.Add("Bank 4", bankFourReports);
+            reportsDictionary.Add("Bank 5", bankFiveReports);
+            reportsDictionary.Add("Bank 6", bankSixReports);
+            reportsDictionary.Add("Bank 7", bankSevenReports);
 
             return reportsDictionary;
         }
@@ -95,6 +131,8 @@ namespace ListBoxExample
             ListBoxItem bankTwoReportSix = new ListBoxItem();
             ListBoxItem bankTwoReportSeven = new ListBoxItem();
             ListBoxItem bankTwoReportEight = new ListBoxItem();
+            ListBoxItem bankTwoReportNine = new ListBoxItem();
+            ListBoxItem bankTwoReportTen = new ListBoxItem();
 
             bankTwoReportOne.Content = "Bank 2 Report 1";
             bankTwoReportTwo.Content = "Bank 2 Report 2";
@@ -104,6 +142,8 @@ namespace ListBoxExample
             bankTwoReportSix.Content = "Bank 2 Report 6";
             bankTwoReportSeven.Content = "Bank 2 Report 7";
             bankTwoReportEight.Content = "Bank 2 Report 8";
+            bankTwoReportNine.Content = "Bank 2 Report 9";
+            bankTwoReportTen.Content = "Bank 2 Report 10";
 
             bankTwoReports.Add(bankTwoReportOne);
             bankTwoReports.Add(bankTwoReportTwo);
@@ -113,8 +153,109 @@ namespace ListBoxExample
             bankTwoReports.Add(bankTwoReportSix);
             bankTwoReports.Add(bankTwoReportSeven);
             bankTwoReports.Add(bankTwoReportEight);
+            bankTwoReports.Add(bankTwoReportNine);
+            bankTwoReports.Add(bankTwoReportTen);
 
             return bankTwoReports;
+        }
+
+        private static List<ListBoxItem> getBankThreeReports()
+        {
+            List<ListBoxItem> bankThreeReports = new List<ListBoxItem>();
+
+            ListBoxItem bankThreeReportOne = new ListBoxItem();
+            ListBoxItem bankThreeReportTwo = new ListBoxItem();
+            ListBoxItem bankThreeReportThree = new ListBoxItem();
+            ListBoxItem bankThreeReportFour = new ListBoxItem();
+
+            bankThreeReportOne.Content = "Bank 3 Report 1";
+            bankThreeReportTwo.Content = "Bank 3 Report 2";
+            bankThreeReportThree.Content = "Bank 3 Report 3";
+            bankThreeReportFour.Content = "Bank 3 Report 4";
+
+            bankThreeReports.Add(bankThreeReportOne);
+            bankThreeReports.Add(bankThreeReportTwo);
+            bankThreeReports.Add(bankThreeReportThree);
+            bankThreeReports.Add(bankThreeReportFour);
+
+            return bankThreeReports;
+        }
+
+        private static List<ListBoxItem> getBankFourReports()
+        {
+            List<ListBoxItem> bankFourReports = new List<ListBoxItem>();
+
+            ListBoxItem bankFourReportOne = new ListBoxItem();
+
+            bankFourReportOne.Content = "Bank 4 Report 1";
+
+            bankFourReports.Add(bankFourReportOne);
+
+            return bankFourReports;
+        }
+
+        private static List<ListBoxItem> getBankFiveReports()
+        {
+            List<ListBoxItem> bankFiveReports = new List<ListBoxItem>();
+
+            ListBoxItem bankFiveReportOne = new ListBoxItem();
+            ListBoxItem bankFiveReportTwo = new ListBoxItem();
+            ListBoxItem bankFiveReportThree = new ListBoxItem();
+            ListBoxItem bankFiveReportFour = new ListBoxItem();
+
+            bankFiveReportOne.Content = "Bank 5 Report 1";
+            bankFiveReportTwo.Content = "Bank 5 Report 2";
+            bankFiveReportThree.Content = "Bank 5 Report 3";
+            bankFiveReportFour.Content = "Bank 5 Report 4";
+
+            bankFiveReports.Add(bankFiveReportOne);
+            bankFiveReports.Add(bankFiveReportTwo);
+            bankFiveReports.Add(bankFiveReportThree);
+            bankFiveReports.Add(bankFiveReportFour);
+
+            return bankFiveReports;
+
+        }
+
+        private static List<ListBoxItem> getBankSixReports()
+        {
+            List<ListBoxItem> bankSixReports = new List<ListBoxItem>();
+
+            ListBoxItem bankSixReportOne = new ListBoxItem();
+            ListBoxItem bankSixReportTwo = new ListBoxItem();
+            ListBoxItem bankSixReportThree = new ListBoxItem();
+            ListBoxItem bankSixReportFour = new ListBoxItem();
+            ListBoxItem bankSixReportFive = new ListBoxItem();
+
+            bankSixReportOne.Content = "Bank 6 Report 1";
+            bankSixReportTwo.Content = "Bank 6 Report 2";
+            bankSixReportThree.Content = "Bank 6 Report 3";
+            bankSixReportFour.Content = "Bank 6 Report 4";
+            bankSixReportFive.Content = "Bank 6 Report 5";
+
+            bankSixReports.Add(bankSixReportOne);
+            bankSixReports.Add(bankSixReportTwo);
+            bankSixReports.Add(bankSixReportThree);
+            bankSixReports.Add(bankSixReportFour);
+            bankSixReports.Add(bankSixReportFive);
+
+            return bankSixReports;
+        }
+
+        private static List<ListBoxItem> getBankSevenReports()
+        {
+            List<ListBoxItem> bankSevenReports = new List<ListBoxItem>();
+
+            ListBoxItem bankSevenReportOne = new ListBoxItem();
+            ListBoxItem bankSevenReportTwo = new ListBoxItem();
+
+            bankSevenReportOne.Content = "Bank 7 Report 1";
+            bankSevenReportTwo.Content = "Bank 7 Report 2";
+
+            bankSevenReports.Add(bankSevenReportOne);
+            bankSevenReports.Add(bankSevenReportTwo);
+
+            return bankSevenReports;
         }
     }
 }

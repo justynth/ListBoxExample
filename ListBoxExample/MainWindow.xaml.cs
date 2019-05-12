@@ -34,23 +34,41 @@ namespace ListBoxExample
 
             foreach(KeyValuePair<string, List<ListBoxItem>> entry in reportsDictionary)
             {
-                string reportKey = entry.Key;
-                List<ListBoxItem> reportList = entry.Value;
-                
-                foreach  (ListBoxItem report in reportList)
+                string clientName = entry.Key;
+                List<ListBoxItem> reportsList = entry.Value;
+
+                foreach  (ListBoxItem report in reportsList)
                 {
-                    string reportName = report.Content.ToString();
-                    if (inputString.Contains(reportName))
+                    string reportString = report.Content.ToString();
+                    if (inputString.Contains(reportString))
                     {
-                        Client_ListBox.SelectedValue = reportKey;
-                        Reports_ListBox.SelectedItem = report;
+                        int clientIndex = getClientIndex(clientName);
+                        Client_ListBox.SelectedItem = Client_ListBox.Items.GetItemAt(clientIndex);
+                        int reportIndex = Reports_ListBox.Items.IndexOf(report);
+                        Reports_ListBox.SelectedItem = Reports_ListBox.Items.GetItemAt(reportIndex);
                     }
-                    else if (inputString.Contains(reportKey))
+                    else if (inputString.Contains(clientName))
                     {
-                        Client_ListBox.SelectedItem = Client_ListBox.Items.IndexOf(reportKey);
+                        int clientIndex = getClientIndex(clientName);
+                        Client_ListBox.SelectedItem = Client_ListBox.Items.GetItemAt(clientIndex);
                     }
                 }
             }
+        }
+
+        private int getClientIndex(string clientName)
+        {
+            int clientIndex = -1;
+
+            foreach (ListBoxItem client in Client_ListBox.Items)
+            {
+                if (clientName == client.Content.ToString())
+                {
+                    clientIndex = Client_ListBox.Items.IndexOf(client);
+                }
+            }
+
+            return clientIndex;
         }
 
         private void Client_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
